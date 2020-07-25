@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><express + passport ></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% if (!user) { %>
+      <a href='/login'> Login </a>
+    <% } else { %>
+      <p> Welcome to <%= user %></p>
+      <a href='/logout'> Logout </a>
+    <% } %>
   </body>
 </html>
