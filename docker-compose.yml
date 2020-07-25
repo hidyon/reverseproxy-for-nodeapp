@@ -1,0 +1,45 @@
+#------------------------------------------------------------------------------
+#
+# Usage
+#
+# $ docker-compose build
+# $ docker-compose up -d
+#
+#------------------------------------------------------------------------------
+version: "3.2"
+services:
+
+  #
+  # application server container
+  #
+  app-server:
+    image: hidyon/app-server
+    build:
+      context: app
+      dockerfile: Dockerfile
+    container_name: app-server
+    ports:
+      - 3000:3000
+    networks:
+      - reverseproxy-webnet
+    restart: always
+
+  #
+  # web proxy server container
+  #
+  proxy-server:
+    image: nginx
+    container_name: proxy-server
+    volumes:
+      - ./nginx/cert:/etc/nginx/cert
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - reverseproxy-webnet
+    restart: always
+  
+networks:
+  reverseproxy-webnet:
+
