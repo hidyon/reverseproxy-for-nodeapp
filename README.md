@@ -6,7 +6,7 @@ reverseproxy-for-nodeapp is the template of proxy server and nodejs app.
 - to get this repository
 ```
 $ git clone <this git repository>
-$ BASE_DIR="${pwd}/reverseproxy-for-nodeapp"
+$ BASE_DIR=`(pwd)`/reverseproxy-for-nodeapp
 ```
 
 - to create the certification files.
